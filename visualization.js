@@ -28,13 +28,12 @@ const visObject = {
   * the data and should update the visualization with the new data.
   **/
   updateAsync: function(data, element, config, queryResponse, details, doneRendering){
-
+    console.log(JSON.stringify(data));
     var customSeries = [];
     var customSeries2 = [];
     var categoricals = [];
     for (const [rowNum, row] of data.entries()) {
-      console.log(row)
-     
+
       rec = Object.values(row);
       categoricals.push(rec[0])
 
@@ -55,17 +54,12 @@ const visObject = {
         }
       })
 
-
       customSeries2.push({
         low: Date.parse(rec[2]),
         high: Date.parse(rec[2])+(rec[4]/100)*((Date.parse(rec[3])-Date.parse(rec[2]))),
         x: categoricals.length - 1
       })
     }
-
-   console.log(categoricals)
-   console.log(customSeries)
-   console.log(customSeries2)
    
     Highcharts.chart('container', {
       chart: {inverted: true},
