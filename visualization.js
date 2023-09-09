@@ -33,6 +33,8 @@ const visObject = {
     var customSeries2 = [];
     var categoricals = [];
     for (const [rowNum, row] of data.entries()) {
+      console.log(row)
+     
       rec = Object.values(row);
       categoricals.push(rec[0])
 
@@ -61,6 +63,10 @@ const visObject = {
       })
     }
 
+   console.log(categoricals)
+   console.log(customSeries)
+   console.log(customSeries2)
+   
     Highcharts.chart('container', {
       chart: {inverted: true},
       series: [
